@@ -7,11 +7,12 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.CompoundButton
+import android.widget.SeekBar
 import android.widget.Toast
 import com.example.components.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener, CompoundButton.OnCheckedChangeListener {
 
      private lateinit var binding: ActivityMainBinding
 
@@ -29,6 +30,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
         binding.buttonSetSpinner.setOnClickListener(this)
         // propriedade e atribuimos desta maneira
         binding.spinnerDinamic.onItemSelectedListener = this
+
+        // atribuindo valor
+        binding.seekbar.progress = 10
+
+        binding.seekbar.setOnSeekBarChangeListener(this)
+
+        // verificar se o switch está habilitado
+        //binding.switchOnOff.isChecked = true
+        binding.switchOnOff.setOnCheckedChangeListener(this)
 
         //loadSpinner()
     }
@@ -65,6 +75,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
              }
          }
      }
+
+    // Evento de mudança do Switch
+    override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
+        val str = "$isChecked"
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+        binding.textSeekbar.text = "$progress - $fromUser"
+    }
+
+    override fun onStartTrackingTouch(seekBar: SeekBar) {
+        Toast.makeText(this, "Start tracking", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onStopTrackingTouch(seekBar: SeekBar) {
+        Toast.makeText(this, "Stop tracking", Toast.LENGTH_SHORT).show()
+    }
 
     override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
         Toast.makeText(this, "$position - $id", Toast.LENGTH_SHORT).show()
