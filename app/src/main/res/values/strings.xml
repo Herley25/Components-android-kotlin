@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Components</string>
-    
+    <string name="app_yes">Yes</string>
+    <string name="app_no">No</string>
+    <string name="app_toast">Toast me!</string>
+    <string name="app_snack">Snack me!</string>
     <string-array name="weight_array">
         <item>Gramas</item>
         <item>Kg</item>

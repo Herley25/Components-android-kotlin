@@ -22,13 +22,13 @@
         android:layout_height="wrap_content" >
         <RadioButton
             android:id="@+id/radio_yes"
-            android:text="Yes"
+            android:text="@string/app_yes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <RadioButton
             android:id="@+id/radio_no"
-            android:text="No"
+            android:text="@string/app_no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </RadioGroup>
@@ -38,7 +38,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Toast me!" />
+        android:text="@string/app_toast" />
 
     <Button
         android:id="@+id/button_snack"
@@ -47,13 +47,44 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/green"
         android:textColor="@color/black"
-        android:text="Snack me!" />
+        android:text="@string/app_snack" />
 
     <Spinner
         android:id="@+id/spinner_static"
+        android:entries="@array/weight_array"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        />
+
+    <Spinner
+        android:id="@+id/spinner_dinamic"
+        android:entries="@array/weight_array"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/linear_button_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/weight_array"
-        />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_get_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:text="Obter spinner"/>
+
+        <Button
+            android:id="@+id/button_set_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:text="Atribuir spinner"/>
+
+    </LinearLayout>
 
 </LinearLayout>
