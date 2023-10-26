@@ -40,6 +40,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
         //binding.switchOnOff.isChecked = true
         binding.switchOnOff.setOnCheckedChangeListener(this)
 
+        // manipulando o checkbox
+        //binding.checkboxOnOff.isChecked = false
+        binding.checkboxOnOff.setOnCheckedChangeListener(this)
+
         //loadSpinner()
     }
 
@@ -78,8 +82,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
 
     // Evento de mudança do Switch
     override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
-        val str = "$isChecked"
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+        when (buttonView.id) {
+            R.id.switch_on_off -> {
+                val str = "Switch: $isChecked"
+                Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+            }
+            R.id.checkbox_on_off -> {
+                val str = "Checkbox: $isChecked"
+                Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
